@@ -36,7 +36,8 @@ struct NodeOptions {
   double pose_publish_period_sec;
   double trajectory_publish_period_sec;
   bool publish_to_tf = true;
-  bool publish_tracked_pose = false;
+  //hayden pure localization set
+  bool publish_tracked_pose = true;
   bool use_pose_extrapolator = true;
 };
 
