@@ -16,9 +16,9 @@
 
 <launch>
   <!-- bag的地址与名称 -->
-  <arg name="bag_filename" default="$(env HOME)/bagfiles/rslidar-outdoor-gps-notf.bag"/>
+  <arg name="bag_filename" default="$(env HOME)/cartographer-ws/rosbag/lesson6-rslidar-outdoor-gps-notf.bag"/>
   <!-- pbstream的地址与名称 -->
-  <arg name="load_state_filename" default="$(env HOME)/carto_ws/map/2d-1.pbstream"/>
+  <arg name="load_state_filename" default="$(env HOME)//cartographer-ws/cartographer_detailed_comments_ws/maps/rslidar-outdoor-gps-notf.pbstream"/>
 
   <!-- 使用bag的时间戳 -->
   <param name="/use_sim_time" value="true" />

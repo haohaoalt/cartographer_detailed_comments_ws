@@ -73,6 +73,9 @@ class Node {
   ::ros::NodeHandle node_handle_;
   const double resolution_;
 
+  //hayden add pure_localization variable
+  // const int pure_localization_;
+
   absl::Mutex mutex_;
   ::ros::ServiceClient client_ GUARDED_BY(mutex_);
   ::ros::Subscriber submap_list_subscriber_ GUARDED_BY(mutex_);
@@ -83,6 +86,28 @@ class Node {
   ros::Time last_timestamp_;
 };
 
+//hayden: add note
+// Node::Node(const int pure_localization, const double resolution,
+//            const double publish_period_sec)
+//     //: pure_localization_(pure_localization), //END 0412
+//     : resolution_(resolution),
+//       pure_localization_(pure_localization),
+//       client_(node_handle_.serviceClient<::cartographer_ros_msgs::SubmapQuery>(
+//           kSubmapQueryServiceName)),
+//       submap_list_subscriber_(node_handle_.subscribe(
+//           kSubmapListTopic, kLatestOnlyPublisherQueueSize,
+//           boost::function<void(
+//               const cartographer_ros_msgs::SubmapList::ConstPtr&)>(
+//               [this](const cartographer_ros_msgs::SubmapList::ConstPtr& msg) {
+//                 HandleSubmapList(msg);
+//               }))),
+//       occupancy_grid_publisher_(
+//           node_handle_.advertise<::nav_msgs::OccupancyGrid>(
+//               FLAGS_occupancy_grid_topic, kLatestOnlyPublisherQueueSize,
+//               true /* latched */)),
+//       occupancy_grid_publisher_timer_(
+//           node_handle_.createWallTimer(::ros::WallDuration(publish_period_sec),
+//                                        &Node::DrawAndPublish, this)) {}
 Node::Node(const double resolution, const double publish_period_sec)
     : resolution_(resolution),
       // SubmapQuery服务的客户端
@@ -200,6 +225,8 @@ void Node::DrawAndPublish(const ::ros::WallTimerEvent& unused_timer_event) {
   
   //  Step: 5 发布map topic
   occupancy_grid_publisher_.publish(*msg_ptr);
+  //hayden: add note
+  // if (pure_localization_ != 1) occupancy_grid_publisher_.publish(*msg_ptr);
 }
 
 }  // namespace

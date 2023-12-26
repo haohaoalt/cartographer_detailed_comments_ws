@@ -2,8 +2,8 @@
 
 source install_isolated/setup.bash
 
-map_dir="${HOME}/carto_ws/map"
-map_name="2d-1"
+map_dir="${HOME}/cartographer-ws/cartographer_detailed_comments_ws/maps"
+map_name="rslidar-outdoor-gps-notf"
 
 # 检查文件夹是否存在, 如果不存在就创建文件夹
 if [ ! -d "$map_dir" ];then

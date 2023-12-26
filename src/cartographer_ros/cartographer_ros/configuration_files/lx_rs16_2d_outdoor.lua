@@ -19,7 +19,7 @@ options = {
   map_builder = MAP_BUILDER,                -- map_builder.lua的配置信息
   trajectory_builder = TRAJECTORY_BUILDER,  -- trajectory_builder.lua的配置信息
   
-  map_frame = "map",                        -- 地图坐标系的名字
+  map_frame = "map",                        -- change1 地图坐标系的名字
   tracking_frame = "imu_link",              -- 将所有传感器数据转换到这个坐标系下
   published_frame = "footprint",            -- tf: map -> footprint
   odom_frame = "odom",                      -- 里程计的坐标系名字
