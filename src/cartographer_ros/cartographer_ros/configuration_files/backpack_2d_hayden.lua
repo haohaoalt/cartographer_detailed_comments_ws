@@ -12,6 +12,9 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 
+-- hayden: cartographer publish tf  map_frame->published_frame  in this file: map->base_link
+-- hayden: provide_odom_frame: true: map->odom->base_link; false: map->base_link
+
 include "map_builder.lua"
 include "trajectory_builder.lua"
 
@@ -19,12 +22,13 @@ options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "map",
-  tracking_frame = "base_link",
+  tracking_frame = "base_link", 
   published_frame = "base_link",
   odom_frame = "odom",
   provide_odom_frame = true,
   publish_frame_projected_to_2d = false,
   use_pose_extrapolator = true,
+
   use_odometry = false,
   use_nav_sat = false,
   use_landmarks = false,
@@ -32,6 +36,7 @@ options = {
   num_multi_echo_laser_scans = 1,
   num_subdivisions_per_laser_scan = 10,
   num_point_clouds = 0,
+  
   lookup_transform_timeout_sec = 0.2,
   submap_publish_period_sec = 0.3,
   pose_publish_period_sec = 5e-3,
